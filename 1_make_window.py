@@ -1,4 +1,6 @@
-# ウインドウを出すだけ
+"""
+ウインドウを出して、隠して、また出す
+"""
 
 # sdl2.ext ... SDL2のpython extentions pysdl2の基本となる
 import sdl2.ext 
