@@ -3,7 +3,7 @@
 イベントループでカーソルキーが押された時に
 sprite.positionを変更する
 
-この方法だと移動前の描画は残ってしまう
+描画前に画面を黒く埋めて直前の画像を消す
 """
 
 import sys
@@ -11,14 +11,12 @@ import sdl2
 import sdl2.ext
 import time
 
+BLACK = sdl2.ext.Color(0, 0, 0)
+
 def run():
     sdl2.ext.init()
     window = sdl2.ext.Window("タイトル", size=(640, 400))
     window.show()
-
-    # 背景用
-    #factory_back = sdl2.ext.SpriteFactory(sdl2.ext.SOFTWARE)
-    spriterender_back = sdl2.ext.SoftwareSpriteRenderSystem(window)
 
     # 画像を読み込み
     factory = sdl2.ext.SpriteFactory(sdl2.ext.SOFTWARE)
@@ -54,11 +52,12 @@ def run():
                     x += 10
                     sprite.position = x, y
 
+        # 移動前の画像を消すために黒で埋めとく
+        sdl2.ext.fill(spriterenderer.surface, BLACK)
         # 描画
         spriterenderer.render(sprite)
     return 0
 
 if __name__ == "__main__":
-    # 正常に終了したらexit(0)で抜ける
     sys.exit(run())
 

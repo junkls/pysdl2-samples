@@ -9,7 +9,7 @@ import time
 
 def run():
     sdl2.ext.init()
-    window = sdl2.ext.Window("タイトル", size=(640, 400))
+    window = sdl2.ext.Window("イベントループ", size=(640, 400))
     window.show()
 
     # sdl2.SDL_QUITでループから抜け出す
